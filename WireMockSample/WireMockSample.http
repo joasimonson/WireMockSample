@@ -1,0 +1,70 @@
+@WireMockSample_HostAddress = http://localhost:5090
+
+### Get all operations
+GET {{WireMockSample_HostAddress}}/domain-request
+Accept: application/json
+
+###
+
+### Get an operation by ID
+GET {{WireMockSample_HostAddress}}/domain-request/1
+Accept: application/json
+
+###
+
+### Create a new operation (Valid Date)
+POST {{WireMockSample_HostAddress}}/domain-request
+Content-Type: application/json
+Accept: application/json
+
+{
+  "id": 2,
+  "date": "2024-12-10",
+  "eirCode": "VALID_EIRCODE"
+}
+
+###
+
+### Create a new operation (Date > Today)
+POST {{WireMockSample_HostAddress}}/domain-request
+Content-Type: application/json
+Accept: application/json
+
+{
+  "id": 3,
+  "date": "2024-12-31",
+  "eirCode": "VALID_EIRCODE"
+}
+
+###
+
+### Create a new operation (Date < 1 Year Ago)
+POST {{WireMockSample_HostAddress}}/domain-request
+Content-Type: application/json
+Accept: application/json
+
+{
+  "id": 4,
+  "date": "2023-11-01",
+  "eirCode": "VALID_EIRCODE"
+}
+
+###
+
+### Create a new operation (Invalid Eircode)
+POST {{WireMockSample_HostAddress}}/domain-request
+Content-Type: application/json
+Accept: application/json
+
+{
+  "id": 5,
+  "date": "2024-12-10",
+  "eirCode": "INVALID_EIRCODE"
+}
+
+###
+
+### Delete an operation by ID
+DELETE {{WireMockSample_HostAddress}}/domain-request/1
+Accept: application/json
+
